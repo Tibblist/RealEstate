@@ -12,6 +12,8 @@ public final class RealEstate extends JavaPlugin implements Listener{
     public void onEnable() {
     	getLogger().info("RealEstate has been enabled!");
     	this.getCommand("basic").setExecutor(new RealEstateCommandExecutor(this));
+    	this.getCommand("re create house").setExecutor(new RealEstateCommandExecutor(this));
+    	
     	PluginManager pm = Bukkit.getPluginManager();
     	pm.registerEvents(new PlayerInteract(), this);
     }

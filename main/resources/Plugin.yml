@@ -1,3 +1,13 @@
     name: RealEstate
     main: net.gloriousfactions.RealEstate.RealEstate
     version: .1
+commands:
+   basic:
+      description: This is a demo command.
+      usage: /<command> [player]
+      permission: <plugin name>.basic
+      permission-message: You don't have <permission>
+   re create house:
+      description: This creates a house!
+      usage: /<command> [player]
+      permission: <plugin name>.createhouse

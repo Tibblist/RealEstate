@@ -2,7 +2,9 @@ package net.gloriousfactions.RealEstate;
 
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 public class Door {
 	String door_type = "";
@@ -13,12 +15,13 @@ public class Door {
 	public int z;
 	public boolean coordsset;
 	Location locs;
+	House house;
 	
-	public Door(String in_name, UUID in_owner, Location loc) {
-		this.door_owner = in_owner;
+	public Door(String in_name, Location loc, House in_house) {
 		this.door_name = in_name;
 		coordsset = false;
 		this.locs = loc;
+		this.house = in_house;
 	}
 	
 	public void setCoords(int in_x, int in_y, int in_z) {
@@ -44,7 +47,15 @@ public class Door {
 		return this.locs;
 	}
 	
-	public UUID getOwner() {
-		return this.door_owner;
+	public boolean isOwner(UUID in_owner) {
+		if (house.owner == in_owner && house.owner != null) {
+			return true;
+		} else {
+			if (house.owner == null) {
+				Player player = Bukkit.getPlayer(in_owner);
+				player.sendMessage("This house has no owner! Check listings it may be for sale!");
+			}
+			return false;
+		}
 	}
 }
